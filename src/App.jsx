@@ -1,18 +1,23 @@
 import PoolList from "./components/PoolList";
+import Spinner from "./components/Spinner";
 import usePools from "./hooks/usePools";
 
 const App = () => {
-  const { pools, isLoading } = usePools()
+  const { pools, isLoading, fetchData } = usePools()
 
   return (
-    <div className="App">
+    <div className="min-h-screen w-full">
       <header className="bg-blue-500 text-white p-4">
         <h1 className="text-2xl">PancakeSwap Staking Pools</h1>
       </header>
       <main className="p-4">
-        {
-          isLoading ? <p>Loading Pools...</p> : <PoolList pools={pools} />
-        }
+        <button
+          onClick={fetchData}
+          className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+        >
+          Fetch New Pools
+        </button>
+        {isLoading ? <Spinner /> : <PoolList pools={pools} />}
       </main>
     </div>
   );
