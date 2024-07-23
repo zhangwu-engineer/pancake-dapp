@@ -14,8 +14,9 @@ const App = () => {
         <button
           onClick={fetchData}
           className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+          disabled={isLoading}
         >
-          Fetch New Pools
+          {isLoading ? 'Fetching Pools' : 'Fetch New'}
         </button>
         {isLoading ? <Spinner /> : <PoolList pools={pools} />}
       </main>
