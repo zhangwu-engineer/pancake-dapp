@@ -13,7 +13,7 @@ const usePools = () => {
   const [cakePerBlock, setCakePerBlock] = useState(0);
   const [isLoading, setIsLoading] = useState(false)
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (isActive = true) => {
     setIsLoading(true)
     try {
       const totalAllocPointRes = await masterChefContract.totalSpecialAllocPoint();
@@ -37,7 +37,10 @@ const usePools = () => {
       }))
 
       const activePools = await Promise.all(poolsDataWithID
-        .filter((pool) => pool.data.allocPoint === 0n) // filter active pools only
+        .filter((pool) => {
+          if (isActive) return pool.data.allocPoint !== 0n
+          return pool.data.allocPoint === 0n
+        }) // filter active pools only
         .map(async (pDataWithID) => {
           const { data: pool, id } = pDataWithID
           try {

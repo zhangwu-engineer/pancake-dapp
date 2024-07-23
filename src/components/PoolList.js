@@ -8,7 +8,7 @@ const PoolList = ({ pools }) => {
         <p className="text-center text-xl">No active pools available</p>
       ) : (
         <div>
-          <p className="text-lg mb-4">We could get <b>{pools.length}</b> Active Pools</p>
+          <p className="text-lg mb-4">We could get <b>{pools.length}</b> Pools</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {pools.map((pool, index) => (
               <div key={index} className="bg-white shadow-md rounded-lg p-4 flex flex-col text-wrap">
