@@ -25,6 +25,7 @@ const usePools = () => {
       setIsFailed(false)
       setCakeAddrs([])
       setFailedTokens([])
+      setFailedTokenCount(0)
 
       // get MasterChef contract info
       const totalAllocPointRes = await masterChefContract.totalSpecialAllocPoint();

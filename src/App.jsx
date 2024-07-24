@@ -6,12 +6,12 @@ import { fetchTokenPrices } from "./utils/helpers";
 import Toggle from "./components/Toggle";
 
 const App = () => {
-  const [showActive, setShowActive] = useState(true)
+  const [showActive, setShowActive] = useState(false)
   const [prices, setPrices] = useState({})
   const [isLoadingPrices, setIsLoadingPrices] = useState(false)
   const [isInitialLoadingPrices, setIsInitialLoadingPrices] = useState(true)
 
-  const { pools, isLoading, fetchData, cakeAddrs, isRetrying, failedCount } = usePools(showActive)
+  const { pools, isLoading, fetchData, cakeAddrs, failedCount } = usePools(showActive)
 
   const [failedAddrs, setFailedAddrs] = useState([])
 
@@ -83,7 +83,7 @@ const App = () => {
           <PoolList pools={pools} prices={prices} />
         )}
         {
-          failedCount < 4 && !isLoading ? 
+          failedCount < 4 && !isLoading && pools.length === 0 ? 
             <div className="fixed bottom-10 right-10">
               <Spinner size={40} />
             </div> : null

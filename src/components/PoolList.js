@@ -6,7 +6,7 @@ const PoolList = ({ pools, prices }) => {
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4">Staking Pools</h1>
       {pools.length === 0 ? (
-        <p className="text-center text-xl">We can't find any active pools at this time</p>
+        <p className="text-center text-xl">We can't find any pools at this time</p>
       ) : (
         <div>
           <p className="text-lg mb-4">We could get <b>{pools.length}</b> Pools</p>
