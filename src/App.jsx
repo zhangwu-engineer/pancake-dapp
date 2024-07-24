@@ -11,7 +11,7 @@ const App = () => {
   const [isLoadingPrices, setIsLoadingPrices] = useState(false)
   const [isInitialLoadingPrices, setIsInitialLoadingPrices] = useState(true)
 
-  const { pools, isLoading, fetchData, cakeAddrs, isRetrying } = usePools(showActive)
+  const { pools, isLoading, fetchData, cakeAddrs, isRetrying, failedCount } = usePools(showActive)
 
   const [failedAddrs, setFailedAddrs] = useState([])
 
@@ -83,12 +83,11 @@ const App = () => {
           <PoolList pools={pools} prices={prices} />
         )}
         {
-          isRetrying ? 
-            <div className="fixed inset-0 bottom-1 right-1">
-              <Spinner />
+          failedCount < 4 && !isLoading ? 
+            <div className="fixed bottom-10 right-10">
+              <Spinner size={40} />
             </div> : null
         }
-       
       </main>
     </div>
   );

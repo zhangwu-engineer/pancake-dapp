@@ -222,7 +222,7 @@ const usePools = () => {
   }, [failedCount, fetchData, isFailed, isLoading]);
 
   console.log(failedTokens, 'failedTOkens')
-  return { pools, isLoading, fetchData, isRetrying, cakeAddrs: [...new Set(cakeAddrs)] };
+  return { pools, isLoading, fetchData, isRetrying, cakeAddrs: [...new Set(cakeAddrs)], failedCount };
 };
 
 export default usePools;
