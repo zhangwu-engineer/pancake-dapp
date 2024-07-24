@@ -85,7 +85,7 @@ const App = () => {
         {
           failedCount < 4 && !isLoading && pools.length === 0 ? 
             <div className="fixed bottom-10 right-10">
-              <Spinner size={40} />
+              <Spinner size={40} text="Retrying" />
             </div> : null
         }
       </main>
