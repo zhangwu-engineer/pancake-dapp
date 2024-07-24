@@ -15,7 +15,7 @@ export const fetchTokenPrices = async (tokenAddresses) => {
   const failedAddrs = []
 
   for (const address of tokenAddresses) {
-    const query = `?vs_currencies=usd&contract_addresses=${address}`;
+    const query = `?vs_currencies=usd&contract_addresses=${address}`; // tried to use batch logic but was impossible with free version
     const url = `${baseUrl}${query}`;
 
     try {
